@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class FeedbackController {
 
@@ -42,5 +44,12 @@ public class FeedbackController {
         feedbackRepository.save(feedback);
         model.addAttribute("message", "Feedback submitted successfully!");
         return "feedback-form";
+    }
+
+    @GetMapping("/showallfeedbacks")
+    public String viewFeedbacks(Model model) {
+        List<Feedback> feedbackList = feedbackRepository.findAll();
+        model.addAttribute("feedbacks", feedbackList);
+        return "feedback-list";
     }
 }

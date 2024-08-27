@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted Feedbacks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .table-container {
+            margin: 50px auto;
+            max-width: 100%;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto; /* Make table scrollable on small screens */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Georgia', serif;
+            color: #007bff;
+        }
+        table {
+            width: 100%;
+            table-layout: auto; /* Allow table to grow based on content */
+        }
+        th, td {
+            text-align: center;
+            word-wrap: break-word; /* Ensure long text wraps within cells */
+            white-space: normal; /* Allow text to wrap */
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="table-container">
+    <h1>Submitted Feedbacks</h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>What was good?</th>
+            <th>What was bad?</th>
+            <th>Suggestions</th>
+            <th>Next Trip</th>
+            <th>When?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="feedback : ${feedbacks}">
+            <td th:text="${feedback.name}">Anonymous</td>
+            <td th:text="${feedback.good}"></td>
+            <td th:text="${feedback.bad}"></td>
+            <td th:text="${feedback.suggestions}"></td>
+            <td th:text="${feedback.nextTrip}"></td>
+            <td th:text="${feedback.tripWhen}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
